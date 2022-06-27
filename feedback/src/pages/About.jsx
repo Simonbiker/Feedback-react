@@ -1,5 +1,7 @@
 import React from 'react'
 import Card from '../components/shared/Card'
+import { Link } from 'react-router-dom';
+
 
 function About() {
   return (
@@ -9,7 +11,7 @@ function About() {
               <p>This is a React app to leave feedback for a product or service</p>
               <p>Version: to be set</p>
               <p>
-                  <a href="/">Back to home</a>
+                  <Link to='/'>Back to home</Link>
               </p>
           </div>
     </Card>
