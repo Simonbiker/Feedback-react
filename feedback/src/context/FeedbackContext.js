@@ -23,6 +23,11 @@ export const FeedbackProvider = ({ children }) => {
         },
     ])
 
+    const [feedbackEdit, setFeedbackEdit] = useState({
+        item: {},
+        edit: false
+    })
+
 
     const addFeedback = (newFeedBack) => {
         newFeedBack.id = uuidv4()
@@ -35,12 +40,28 @@ export const FeedbackProvider = ({ children }) => {
         }
     }
 
+    //This will set item to be updated.
+    const editFeedback = (item) => {
+        setFeedbackEdit({
+            item,
+            edit: true
+        })
+    }
+
+    const updatefeedback = (id, updItem) => {
+        setFeedback(
+            feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item))
+        )
+    }
 
 
     return <FeedbackContext.Provider value={{
         feedback,
+        feedbackEdit, // The state we are changing. The form needs to know the item.
         deleteFeedback,
         addFeedback,
+        editFeedback, //function that picks the card to edit
+        updatefeedback,
     }}>
         {children}
     </FeedbackContext.Provider>
